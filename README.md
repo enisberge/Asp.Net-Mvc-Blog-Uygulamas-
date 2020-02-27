@@ -1,2 +1,2 @@
-# Asp.Net-Mvc-Blog-Uygulamas-
-Asp.net Mvc ile katmanlı mimariye uygun entitiy framework ve code first yapısıyla geliştirilmiş blog sitesi
+# Asp.Net Mvc Blog Uygulaması
+Asp.net Mvc ile entity framework kullanılarak katmanlı mimari yapısına uygun web projesi. Bu projede front-end bölümünde html,css bootstrap ve javascript teknolojileri, back-end bölümünde ise Asp.net Mvc,entity framework,linq sorgu yapısı gibi teknolojilerden faydalanılmıştır.  Projeyi indirdiğiniz zaman, web.config ayarlarınızda gerekli düzenlemeyi yapıp çalıştırdığınızda, sistem otomatik olarak veritabanını(MsSql) oluşturur.Kullanıcı adı "admin" ve şifresi "123456" olan bir kullanıcı tanımlar. Giriş yap bölümünden sisteme giriş yapıp kullanabilirsiniz. Sorunuz olursa bana enisberge@gmail.com adresinden ulaşabilirsiniz. 
