@@ -1,0 +1,66 @@
+﻿@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .container-evernoteuser {
+        max-width: 50%;
+    }
+
+    label {
+        font-weight: bold;
+        color: #0061F2;
+    }
+</style>
+
+<div class="container container-evernoteuser mt-3">
+    <form>
+        <h4>Kategori Detayı</h4>
+        <hr />
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Title)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedUsername, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                @Bootstrap.LinkButton("/Category/Edit/" + Model.Id, "warning", "btn-sm", string.Empty, "far fa-edit", "Düzenle")
+
+                @Bootstrap.LinkButton("/Category/Index/", "secondary", "btn-sm", string.Empty, "clipboard-list", "Kategori Listesi")
+            </div>
+        </div>
+    </form>
+</div>

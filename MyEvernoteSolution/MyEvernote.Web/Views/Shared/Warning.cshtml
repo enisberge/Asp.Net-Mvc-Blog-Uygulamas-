@@ -1,0 +1,50 @@
+﻿@model MyEvernote.Web.ViewModels.WarningViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+<link href="~/Content/login-register.css" rel="stylesheet" />
+
+<div class="container d-flex justify-content-center my-5">
+    <div class="card register">
+        <div class="card-header">
+            <strong>@Model.Header</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center"><i class="fas fa-exclamation-triangle text-warning"></i> @Model.Title</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr> <!-- other content  -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>
+                        @foreach (string msg in Model.Items)
+                        {
+                            @msg<br>
+                        }
+                    </p>
+                </div>
+            </div>
+            <!-- <a href="#" onClick="">I forgot my password!</a> -->
+
+        </div>
+    </div>
+</div>
+@{
+    string js = string.Empty;
+    if (Model.IsRedirecting)
+    {
+        js = "setTimeout(function() { window.location = '" + Model.RedirectingUrl + "'; }," + Model.RedirectingTimeout + ");";
+    }
+}
+<script>
+    $(function () {
+        @Html.Raw(js);
+    });
+</script>

@@ -1,0 +1,94 @@
+﻿@model MyEvernote.Entities.Note
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .container-evernoteuser {
+        max-width: 50%;
+    }
+
+    label {
+        font-weight: bold;
+        color: #0061F2;
+    }
+</style>
+
+<div class="container container-evernoteuser mt-3">
+    <form>
+        <h4>Konu Detayı</h4>
+        <hr />
+        <div class="form-group row">
+            @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Category.Title)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Title)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Text)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.IsDraft, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.IsDraft, new { @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.LikeCount, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.LikeCount)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedUsername, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                @Bootstrap.LinkButton("/Note/Edit/" + Model.Id, "warning", "btn-sm", string.Empty, "far fa-edit", "Düzenle")
+
+                @Bootstrap.LinkButton("/Note/Index/", "secondary", "btn-sm", string.Empty, "clipboard-list", "Konu Listesi")
+            </div>
+        </div>
+    </form>
+</div>

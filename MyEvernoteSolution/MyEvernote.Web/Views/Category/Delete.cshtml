@@ -1,0 +1,76 @@
+﻿@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    .container-category {
+        max-width: 50%;
+    }
+
+    dt {
+        color: #0061F2;
+    }
+</style>
+<div class="container container-category mt-5">
+    <h3>Bu kategoriyi silmek istediğinize emin misiniz ?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+              
+                @Bootstrap.Button("danger", "btn-sm", "submit", "trash-alt", "Kaldır")
+
+                @Bootstrap.LinkButton("/Category/Index/", "secondary", "btn-sm", string.Empty, "clipboard-list", "Kategori Listesi")
+
+            </div>
+        }
+    </div>
+</div>

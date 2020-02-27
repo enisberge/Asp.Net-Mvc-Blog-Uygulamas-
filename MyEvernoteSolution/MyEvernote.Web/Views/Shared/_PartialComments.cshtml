@@ -1,0 +1,70 @@
+﻿@using MyEvernote.Entities
+@using MyEvernote.Web.Models
+@model List<Comment>
+
+@{
+    EvernoteUser user = CurrentSession.User;
+}
+
+@foreach (Comment item in Model)
+{
+    <div class="media">
+        <img class="mr-3 rounded-circle" src="~/Images/@item.Owner.ProfileImageFileName" alt="Generic placeholder image" width="48px" height="48px">
+        <div class="media-body">
+            <div class="row">
+                <div class="col-md-9" id="comment_text_@item.Id" contenteditable="false">
+                    <small>
+                        @item.Text
+                    </small>
+
+
+                </div>
+                @if (user != null && user.Id == item.Owner.Id)
+                {
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-warning btn-xs" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@item.Id,'#comment_text_@item.Id');">
+                            <i class="far fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" onclick="doComment(this,'delete_clicked',@item.Id);">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                }
+
+                <div class="col-md-12 text-muted my-3">
+                    <small class="float-right">
+                        <i class="fas fa-clock"></i>@item.ModifiedOn&nbsp;
+                        <i class="fas fa-user"></i> @item.Owner.Username
+                    </small>
+                    <br />
+                    <hr />
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@if (user != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group mb-3">
+                <input type="text" id="new_comment_text" class="form-control" placeholder="Yorumunuz..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" id="button-addon2" onclick="doComment(this,'new_clicked',-1);">
+                        <i class="fas fa-share-square"></i>
+                        Gönder
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

@@ -1,0 +1,161 @@
+﻿@using MyEvernote.Entities
+@using MyEvernote.Web.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Enis Berge - Yazılım Geliştirme</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/ckeditor/contents.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <!-- FontAwesome JavaScript -->
+    <script src="https://kit.fontawesome.com/47450dcd5c.js" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="~/Content/shop-homepage.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+  
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index">
+                <img src="~/Images/icon/icon.png" width="48" height="48" alt="Alternate Text" style="outline: none" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Home/Index">
+                            <i class="fas fa-home"></i>
+                            Anasayfa
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    @if (CurrentSession.User != null)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/Note/Index" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tools"></i>
+                                Yönetim Paneli
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/Note/MyLikedNotes">
+                                    <i class="fab fa-gratipay"></i>
+                                    Beğendiklerim
+                                </a>
+                                @Bootstrap.LinkMenu("/Note/Create", "far fa-plus-square", "Konu Ekle", "dropdown-item")
+                                @Bootstrap.LinkMenu("/Note/Index", "far fa-list-alt", "Konularım", "dropdown-item")
+
+                                @if (CurrentSession.User.IsAdmin)
+                                {
+                                    <div class="dropdown-divider"></div>
+                                    @Bootstrap.LinkMenu("/Category/Create", "folder-plus", "Kategori Ekle", "dropdown-item")
+                                    @Bootstrap.LinkMenu("/Category/Index", "clipboard-list", "Kategori Listesi", "dropdown-item")
+                                    <div class="dropdown-divider"></div>
+                                    @Bootstrap.LinkMenu("/EvernoteUser/Create", "user-plus", "Kullanıcı Ekle", "dropdown-item")
+                                    @Bootstrap.LinkMenu("/EvernoteUser/Index", "users", "Kullanıcı Listesi", "dropdown-item")
+                                    <div class="dropdown-divider"></div>
+                                  
+                                }
+
+
+
+
+                            </div>
+                        </li>
+
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/MostLiked">
+                            <i class="far fa-thumbs-up"></i>
+                            En Beğenilenler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Index">
+                            <i class="fas fa-list-ul"></i>
+                            Son Yazılar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/About">
+                            <i class="far fa-question-circle"></i>
+                            Hakkımda
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    @if (CurrentSession.User == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Login">
+                                <i class="fas fa-sign-in-alt"></i> Giriş
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Register">
+                                <i class="fas fa-user-plus"></i> Üye Ol !
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/Home/ShowProfile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user text-success"></i>
+                                @CurrentSession.User.Username
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/Home/ShowProfile">
+                                    <i class="fas fa-user"></i>
+                                    Profili Göster
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Home/EditProfile">
+                                    <i class="far fa-edit"></i>
+                                    Profili Düzenle
+                                </a>
+                                <a class="dropdown-item" href="/Home/DeleteProfile" onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz ?');"> <i class="fas fa-trash-alt"></i> Profili Sil</a>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Logout">
+                                <i class="fas fa-sign-out-alt"></i> Çıkış
+                            </a>
+                        </li>
+                    }
+
+
+
+                </ul>
+            </div>
+
+
+
+        </div>
+    </nav>
+
+
+    @RenderBody()
+
+    <!-- /.container -->
+    <!-- Footer -->
+    @RenderSection("footer", required: false)
+
+</body>
+</html>

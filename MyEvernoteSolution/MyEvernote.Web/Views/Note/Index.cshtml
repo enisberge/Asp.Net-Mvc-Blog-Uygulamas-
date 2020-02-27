@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MyEvernote.Entities.Note>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    th {
+        color: #0061F2;
+        font-size: small;
+    }
+
+    .container-Note {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+</style>
+<div class="container-Note mt-4">
+    <h3>Konular</h3>
+    <hr />
+    <p>
+        <a href="/Note/Create" class="btn btn-primary btn-sm">
+            <i class="far fa-plus-square"></i>
+            Yeni Konu Ekle
+        </a>
+    </p>
+    <table class="table table-striped">
+        <tr>
+            <th style="width: 12%">
+                @Html.DisplayNameFor(model => model.Category.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoteImageFileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDraft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </th>
+            <th style="width: 13%"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.Raw(item.Text)
+                </td>
+                <th>
+                    <img src="~/Images/Note/@item.NoteImageFileName" alt="avatar" width="200" height="150">
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDraft)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LikeCount)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal_comment"data-note-id="@item.Id">
+                        <i class="fas fa-comment-alt"></i>
+                    </button>
+
+                    @Bootstrap.LinkButton("/Note/Edit/" + @item.Id, "warning", "btn-xs", "Düzenle", "edit", string.Empty)
+
+                    @Bootstrap.LinkButton("/Note/Details/" + @item.Id, "primary", "btn-xs", "Detay", "search-plus", string.Empty)
+
+                    @Bootstrap.LinkButton("/Note/Delete/" + @item.Id, "danger", "btn-xs", "Sil", "trash-alt", string.Empty)
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@Bootstrap.ModalPopup("modal_comment", "Yorumlar")
+
+<script src="~/Scripts/comment.js"></script>

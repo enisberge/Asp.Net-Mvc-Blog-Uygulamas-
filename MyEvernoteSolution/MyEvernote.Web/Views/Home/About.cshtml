@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <!--Kategoriler-->
+            @Html.Partial("_PartialCategories")
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+            <!--Content-->
+            <div class="row">
+                <div class="container my-5">
+
+
+                    <h2 class="text-info">Ben Kimim ?</h2>
+                    <p>
+                       2014 yılında Mersin Üniversitesi Bilgisayar Programcılığı bölümünden mezun oldum. Bilgilerimi taze ve güncel tutmak adına zaman zaman mesleğimle ilgili kurslara katılıp sertifikalar edindim. Yazılım geliştirici olmak benim için bir işten ziyade bir hobi niteliğinde. Mesleğimden farklı işlerde çalışmış olsam da yazılım geliştirme sevgisi ağır bastığından son 2 senedir kendimi tamamen yeni teknolojileri öğrenmeye adadım. Front-end bölümünde Html,Css,Bootstrap ve javascript ile çalışırken back-end'te veritabanında MsSql ve yazılım dili olarak C# ile geliştirme yapmaya devam etmekteyim. Masaüstü uygulamaları ve web uygulamaları olarak ticari olmayan çalışmalarım mevcut. Burası benim kişisel sitem ve burada temel amacım öğrendiklerimi ve geliştirdiğim bazı uygulamaları paylaşmak.
+                    </p>
+
+                    <img style="object-fit: cover" class="float-right rounded-circle" width="150" height="150" src="~/Images/about/profil.jpg" alt="Alternate Text" />
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
+</div>
+@section footer{
+    @Html.Partial("_PartialFooter")
+}

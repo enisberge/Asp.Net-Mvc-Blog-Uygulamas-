@@ -1,0 +1,85 @@
+﻿@using MyEvernote.Entities.ValueObjects
+@model RegisterViewModel
+@{
+    ViewBag.Title = "MyEvernote - Kayıt Sayfası";
+}
+<link href="/Content/login-register.css" rel="stylesheet" />
+<link href="~/Content/ValidationSummary.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    <div class="container d-flex justify-content-center my-5">
+        <div class="card register">
+            <div class="card-header">
+                <strong>Kayıt</strong>
+            </div>
+            <div class="card-body">
+                @Html.ValidationSummary(false)<!--buna true dersek her hatayı göstermez-->
+                <div class="row">
+                    <div class="col">
+                        <span class="profile-img">
+                            <i class='fas fa-user-circle' style='font-size: 120px'></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <hr> <!-- other content  -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class='fas fa-user-shield'></i>
+                                    </span>
+                                </div>
+                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-posta Adresi" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class='fas fa-user-secret'></i>
+                                    </span>
+                                </div>
+
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Şifre", type = "password" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class='fas fa-user-secret'></i>
+                                    </span>
+                                </div>
+
+                                @Html.TextBoxFor(model => model.RePassword, new { @class = "form-control", placeholder = "Şifre Tekrar", type = "password" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Kayıt Ol">
+                        </div>
+                    </div>
+                </div>
+                <!-- <a href="#" onClick="">I forgot my password!</a> -->
+
+            </div>
+        </div>
+    </div>
+}
+

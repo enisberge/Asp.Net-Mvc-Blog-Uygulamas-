@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MyEvernote.Entities.Category>
+
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<style>
+    th {
+        color: #0061F2;
+        font-size: small;
+    }
+</style>
+<div class="container mt-4">
+    <h3>Kategoriler</h3>
+    <hr />
+    <p>
+        <a href="/Category/Create" class="btn btn-primary btn-sm">
+            <i class="fas fa-folder-plus"></i>
+            Yeni Kategori Ekle
+        </a>
+    </p>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedUsername)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedUsername)
+                </td>
+                <td>
+                    @Bootstrap.LinkButton("/Category/Edit/" + @item.Id, "warning", "btn-sm", "Düzenle", "edit", string.Empty)
+
+                    @Bootstrap.LinkButton("/Category/Details/" + @item.Id, "primary", "btn-sm", "Detay", "search-plus", string.Empty)
+
+                    @Bootstrap.LinkButton("/Category/Delete/" + @item.Id, "danger", "btn-sm", "Sil", "trash-alt", string.Empty)
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

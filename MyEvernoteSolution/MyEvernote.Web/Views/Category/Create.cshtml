@@ -1,0 +1,49 @@
+﻿@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Create";
+}
+<link href="~/Content/ValidationSummary.css" rel="stylesheet" />
+<style>
+    .container-category {
+        max-width: 50%;
+    }
+</style>
+
+<div class="container container-category mt-5">
+        
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <!-- edit form column -->
+            @Html.ValidationSummary(false)
+            <h4>Kategori Ekle</h4>
+            <hr/>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control rows" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        @Bootstrap.Button("success", "btn-sm", "submit", "fas fa-plus", "Oluştur")
+
+                        @Bootstrap.LinkButton("/Category/Index/", "secondary", "btn-sm", string.Empty, "clipboard-list", "Kategori Listesi")
+                    </div>
+                </div>
+              
+            </div>
+
+        }
+
+</div>

@@ -1,0 +1,49 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/template-overviews/shop-homepage)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+    padding-top: 56px;
+}
+
+div hr {
+    background-color: #CCCCCC;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+}
+
+.form-control-xs {
+    height: calc(1em + .375rem + 2px) !important;
+    padding: .125rem .25rem !important;
+    font-size: .75rem !important;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+.card-footer button {
+    color: cornflowerblue;
+    border-color: #cccccc;
+}
+
+    .card-footer button:hover {
+        color: cornflowerblue;
+        background-color: #cccccc;
+    }
+
+button .far.fa-thumbs-up {
+    color: cornflowerblue;
+}
+
+.fas.fa-heart {
+    color: #F82270;
+}
+
+.list-group-item:hover {
+    text-decoration: none;
+}

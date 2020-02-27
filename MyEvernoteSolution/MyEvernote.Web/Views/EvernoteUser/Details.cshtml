@@ -1,0 +1,100 @@
+﻿@model MyEvernote.Entities.EvernoteUser
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .container-evernoteuser {
+        max-width: 50%;
+    }
+    label {
+        font-weight: bold;
+        color: #0061F2;
+    }
+</style>
+
+<div class="container container-evernoteuser mt-3">
+    <form>
+        <h4>Kullanıcı Detayı</h4>
+        <hr />
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Surname)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Username)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Password)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.IsActive)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.IsAdmin)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedOn, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.ModifiedUsername, htmlAttributes: new { @class = "col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ModifiedUsername)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                @Bootstrap.LinkButton("/EvernoteUser/Edit/" + Model.Id, "warning", "btn-sm", string.Empty, "far fa-edit", "Düzenle")
+
+                @Bootstrap.LinkButton("/EvernoteUser/Index/", "secondary", "btn-sm", string.Empty, "clipboard-list", "Kullanıcı Listesi")
+            </div>
+        </div>
+    </form>
+</div>

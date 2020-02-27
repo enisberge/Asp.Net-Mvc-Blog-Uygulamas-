@@ -1,0 +1,17 @@
+﻿.validation-summary-errors {
+    border: 2px dotted #721c24;
+    background-color: indianred;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.validation-summary-errors ul {
+    color:indianred;
+    padding: 10px;
+
+}
+
+.validation-summary-errors ul li{
+    color: white;
+    list-style: none;
+       
+}
